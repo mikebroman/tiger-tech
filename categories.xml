@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TigerTech Assignment 1 - the "categories" vocabulary.
-     ONE category is provided as a model. Add at least one more so the
-     file has 2+ categories total (graduate students: 3+). -->
 <cat:categories xmlns:cat="http://tigertech.example/categories">
-
    <cat:category cat:catID="CAT-LAP">
       <cat:name>Laptops</cat:name>
       <cat:blurb><![CDATA[Ultrabooks & workstations. Note the & and < are safe inside CDATA.]]></cat:blurb>
    </cat:category>
 
-   <!-- TODO: add CAT-AUD (Audio) and CAT-ACC (Accessories) here,
-        following the exact pattern above. -->
+   <cat:category cat:catID="CAT-AUD">
+      <cat:name>Audio</cat:name>
+      <cat:blurb><![CDATA[Headphones, speakers & studio gear for listening at home or on the go.]]></cat:blurb>
+   </cat:category>
 
+   <cat:category cat:catID="CAT-ACC">
+      <cat:name>Accessories</cat:name>
+      <cat:blurb><![CDATA[Chargers, hubs, cases & other essentials for a complete setup.]]></cat:blurb>
+   </cat:category>
+
+   <cat:category cat:catID="CAT-GAM">
+      <cat:name>Gaming</cat:name>
+      <cat:blurb><![CDATA[Controllers, simulation gear & other equipment for PC and console gaming.]]></cat:blurb>
+   </cat:category>
+
+   <cat:category cat:catID="CAT-COM">
+      <cat:name>PC Components</cat:name>
+      <cat:blurb><![CDATA[Storage, memory & other parts for building or upgrading a computer.]]></cat:blurb>
+   </cat:category>
+
+   <cat:category cat:catID="CAT-MOB">
+      <cat:name>Mobile Devices</cat:name>
+      <cat:blurb><![CDATA[Tablets, phones & other portable devices for everyday use.]]></cat:blurb>
+   </cat:category>
 </cat:categories>
