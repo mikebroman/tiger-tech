@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- TigerTech Assignment 1 - the COMPOUND (master) document.
+     Complete the internal DTD and the entity references below. -->
+<!DOCTYPE store [
+
+   <!-- TODO 1: declare two GENERAL entities for reused text,
+        e.g. storeName and copyright. -->
+
+   <!-- TODO 2: declare two EXTERNAL PARSED entities that read
+        categories.xml and products.xml into this document. -->
+
+   <!-- TODO 3: declare the ELEMENTs and ATTLISTs for BOTH namespaces
+        (cat:* and prod:*). Remember a DTD is NOT namespace-aware, so you
+        must declare the prefixed names literally and declare the
+        xmlns:cat / xmlns:prod attributes. Make cat:catID and prod:sku
+        of type ID, and make prod:category an IDREF that points at a catID. -->
+
+   <!-- TODO 4: declare the master elements: store, header, title, notice. -->
+
+]>
+<store>
+   <header>
+      <!-- TODO 5: use your storeName and copyright entities here -->
+      <title>PUT-STORENAME-ENTITY-HERE Product Catalog</title>
+      <notice>PUT-COPYRIGHT-ENTITY-HERE</notice>
+   </header>
+
+   <!-- TODO 6: reference your two external entities here to pull the
+        categories and products into this compound document. -->
+
+</store>

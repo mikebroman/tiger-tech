@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TigerTech Assignment 1 - the "products" vocabulary.
+     ONE product is provided as a model showing every required child
+     element and attribute. Add at least three more products so the file
+     has 4+ total (graduate students: 6+), spanning 2+ categories.
+     Each prod:category value MUST be a catID that exists in categories.xml. -->
+<prod:catalog xmlns:prod="http://tigertech.example/products">
+
+   <prod:product prod:sku="TT-1001" prod:category="CAT-LAP">
+      <prod:name>Aurora 14 Ultrabook</prod:name>
+      <prod:price currency="USD">1299.00</prod:price>
+      <prod:stock>14</prod:stock>
+      <prod:description><![CDATA[14" OLED, 32 GB RAM, 1 TB SSD.]]></prod:description>
+   </prod:product>
+
+   <!-- TODO: add 3+ more products. Give each a unique prod:sku
+        (TT-1002, TT-2001, ...) and a valid prod:category. -->
+
+</prod:catalog>
