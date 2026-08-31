@@ -1,3 +1,4 @@
+<!-- TigerTech XML Assignment 1 - External DTD -->
 <!-- Shared content model for elements that contain only text. -->
 <!ENTITY % textContent "(#PCDATA)">
 

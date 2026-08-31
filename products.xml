@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- TigerTech XML Assignment 1 - Products -->
 <prod:catalog xmlns:prod="http://tigertech.example/products">
    <prod:product prod:sku="TT-1001" prod:category="CAT-LAP" prod:condition="new">
       <prod:name>Apple MacBook Pro 14</prod:name>
