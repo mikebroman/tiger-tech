@@ -1,39 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE store [
-   <!ENTITY storeName "TigerTech">
-   <!ENTITY copyright "Copyright &#169; 2026 &storeName;. All rights reserved.">
-
-   <!ENTITY categoriesDoc SYSTEM "categories.xml">
-   <!ENTITY productsDoc SYSTEM "products.xml">
-
-   <!ELEMENT store (header, cat:categories, prod:catalog)>
-   <!ELEMENT header (title, notice)>
-   <!ELEMENT title (#PCDATA)>
-   <!ELEMENT notice (#PCDATA)>
-
-   <!ELEMENT cat:categories (cat:category+)>
-   <!ATTLIST cat:categories
-      xmlns:cat CDATA #FIXED "http://tigertech.example/categories">
-   <!ELEMENT cat:category (cat:name, cat:blurb)>
-   <!ATTLIST cat:category
-      cat:catID ID #REQUIRED>
-   <!ELEMENT cat:name (#PCDATA)>
-   <!ELEMENT cat:blurb (#PCDATA)>
-
-   <!ELEMENT prod:catalog (prod:product+)>
-   <!ATTLIST prod:catalog
-      xmlns:prod CDATA #FIXED "http://tigertech.example/products">
-   <!ELEMENT prod:product (prod:name, prod:price, prod:stock, prod:description)>
-   <!ATTLIST prod:product
-      prod:sku ID #REQUIRED
-      prod:category IDREF #REQUIRED>
-   <!ELEMENT prod:name (#PCDATA)>
-   <!ELEMENT prod:price (#PCDATA)>
-   <!ATTLIST prod:price
-      currency CDATA #IMPLIED>
-   <!ELEMENT prod:stock (#PCDATA)>
-   <!ELEMENT prod:description (#PCDATA)>
-]>
+<!DOCTYPE store SYSTEM "tigertech.dtd">
 <store>
    <header>
       <title>&storeName; Product Catalog</title>
