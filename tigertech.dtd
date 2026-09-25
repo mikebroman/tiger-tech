@@ -1,0 +1,44 @@
+<!-- TigerTech XML Assignment 1 - External DTD -->
+<!-- Shared content model for elements that contain only text. -->
+<!ENTITY % textContent "(#PCDATA)">
+
+<!ENTITY storeName "TigerTech">
+<!ENTITY copyright "Copyright &#169; 2026 &storeName;. All rights reserved.">
+
+<!ENTITY categoriesDoc SYSTEM "categories.xml">
+<!ENTITY productsDoc SYSTEM "products.xml">
+
+<!ELEMENT store (header, cat:categories, prod:catalog)>
+<!ELEMENT header (title, notice)>
+<!ELEMENT title %textContent;>
+<!ELEMENT notice %textContent;>
+
+<!ELEMENT cat:categories (cat:category+)>
+<!ATTLIST cat:categories
+   xmlns:cat CDATA #FIXED "http://tigertech.example/categories">
+<!ELEMENT cat:category (cat:name, cat:blurb)>
+<!ATTLIST cat:category
+   cat:catID ID #REQUIRED>
+<!ELEMENT cat:name %textContent;>
+<!ELEMENT cat:blurb %textContent;>
+
+<!ELEMENT prod:catalog (prod:product+, prod:bundles)>
+<!ATTLIST prod:catalog
+   xmlns:prod CDATA #FIXED "http://tigertech.example/products">
+<!ELEMENT prod:product (prod:name, prod:price, prod:stock, prod:description)>
+<!ATTLIST prod:product
+   prod:sku ID #REQUIRED
+   prod:category IDREF #REQUIRED
+   prod:condition (new | refurbished | open-box) "new">
+<!ELEMENT prod:name %textContent;>
+<!ELEMENT prod:price %textContent;>
+<!ATTLIST prod:price
+   currency CDATA #IMPLIED>
+<!ELEMENT prod:stock %textContent;>
+<!ELEMENT prod:description %textContent;>
+
+<!ELEMENT prod:bundles (prod:bundle+)>
+<!ELEMENT prod:bundle EMPTY>
+<!ATTLIST prod:bundle
+   prod:bundleID ID #REQUIRED
+   prod:products IDREFS #REQUIRED>
