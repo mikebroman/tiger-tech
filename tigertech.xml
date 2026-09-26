@@ -1,13 +1,27 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Mike Broman - 08-31-2026 -->
-<!-- TigerTech XML Assignment 1 - Master Document -->
-<!DOCTYPE store SYSTEM "tigertech.dtd">
-<store>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TigerTech | XML Assignment 2 | combined master, self-contained.
+     Validated by XML Schema (tigertech.xsd), which imports the two vocabulary schemas. -->
+<store xmlns:cat="http://tigertech.example/categories"
+       xmlns:prod="http://tigertech.example/products"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="tigertech.xsd">
    <header>
-      <title>&storeName; Product Catalog</title>
-      <notice>&copyright;</notice>
+      <title>TigerTech Product Catalog</title>
+      <notice>Copyright 2026 TigerTech. All rights reserved.</notice>
    </header>
 
-   &categoriesDoc;
-   &productsDoc;
+   <cat:categories>
+      <cat:category catID="CAT-LAP"><cat:name>Laptops</cat:name><cat:blurb><![CDATA[Ultrabooks & workstations.]]></cat:blurb></cat:category>
+      <cat:category catID="CAT-AUD"><cat:name>Audio</cat:name><cat:blurb><![CDATA[Headphones, earbuds & speakers.]]></cat:blurb></cat:category>
+      <cat:category catID="CAT-ACC"><cat:name>Accessories</cat:name><cat:blurb><![CDATA[Stands, chargers & cables.]]></cat:blurb></cat:category>
+   </cat:categories>
+
+   <prod:catalog>
+      <prod:product sku="TT-1001" category="CAT-LAP"><prod:name>Aurora 14 Ultrabook</prod:name><prod:price currency="USD">1299.00</prod:price><prod:stock>14</prod:stock><prod:description><![CDATA[14" OLED, 32 GB RAM, 1 TB SSD.]]></prod:description></prod:product>
+      <prod:product sku="TT-1002" category="CAT-LAP"><prod:name>Aurora 16 Pro</prod:name><prod:price currency="USD">1899.00</prod:price><prod:stock>6</prod:stock><prod:description><![CDATA[16" mini-LED creator laptop.]]></prod:description></prod:product>
+      <prod:product sku="TT-2001" category="CAT-AUD"><prod:name>SoundWave Buds</prod:name><prod:price currency="USD">149.00</prod:price><prod:stock>40</prod:stock><prod:description><![CDATA[Wireless earbuds with ANC.]]></prod:description></prod:product>
+      <prod:product sku="TT-2002" category="CAT-AUD"><prod:name>SoundWave Over-Ear</prod:name><prod:price currency="USD">249.00</prod:price><prod:stock>12</prod:stock><prod:description><![CDATA[Over-ear headphones, 40-hour battery.]]></prod:description></prod:product>
+      <prod:product sku="TT-3001" category="CAT-ACC"><prod:name>GripStand Laptop Stand</prod:name><prod:price currency="USD">59.00</prod:price><prod:stock>75</prod:stock><prod:description><![CDATA[Aluminium stand, adjustable.]]></prod:description></prod:product>
+      <prod:product sku="TT-3002" category="CAT-ACC"><prod:name>HyperCharge 65W USB-C</prod:name><prod:price currency="USD">39.00</prod:price><prod:stock>120</prod:stock><prod:description><![CDATA[Compact GaN charger.]]></prod:description></prod:product>
+   </prod:catalog>
 </store>

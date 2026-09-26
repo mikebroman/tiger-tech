@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TigerTech A2 - products schema. The namespace setup is done for you.
+     Fill in the TODOs. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:prod="http://tigertech.example/products"
+           targetNamespace="http://tigertech.example/products"
+           elementFormDefault="qualified">
+
+   <!-- TODO 1: define simpleType skuType - a string matching TT- and 4 digits
+        (e.g. TT-1001). -->
+
+   <!-- TODO 2: define simpleType moneyType - a decimal that is >= 0 and has at
+        most 2 fraction digits. -->
+
+   <!-- TODO 3: define simpleType currencyType - a string restricted to the
+        values USD, EUR, GBP. -->
+
+   <!-- TODO 4: declare the <catalog> root element - a sequence of one or more
+        <product> elements. -->
+
+   <!-- TODO 5: declare the <product> element:
+          sequence of:
+            <name>        string
+            <price>       moneyType text WITH a currency attribute of currencyType
+            <stock>       a whole number >= 0
+            <description> string
+          attributes:
+            sku       required, type skuType
+            category  required, string  (linked to a category in tigertech.xsd) -->
+
+</xs:schema>

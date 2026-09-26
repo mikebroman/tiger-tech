@@ -1,23 +1,12 @@
-TigerTech - XML Assignment 1 - Starter Files
+TigerTech - XML Assignment 2 - Starter Files
 ============================================
 
-You are building the DATA LAYER for the TigerTech online store. Every
-later assignment (schema validation, XSLT reports, and the JSP web app)
-reuses these same files, so build them carefully.
+PROVIDED (do not change): the data files carried over from Assignment 1
+  categories.xml   products.xml   tigertech.xml
 
-Files in this folder:
-  categories.xml   One category is filled in as a model. Add the rest.
-  products.xml     One product is filled in as a model. Add the rest.
-  tigertech.xml    A skeleton master document. YOU write the internal
-                   DTD and the entity references (see the TODO markers).
+YOU COMPLETE: the three schema skeletons (follow the TODO markers)
+  categories.xsd   products.xsd   tigertech.xsd
 
-Category reference (use these catID values in your products):
-  CAT-LAP  Laptops
-  CAT-AUD  Audio
-  CAT-ACC  Accessories
-
-What to submit: the three completed files above (graduate students also
-submit tigertech.dtd and answers.txt - see the instruction sheet).
-
-Open the folder in IntelliJ IDEA. To validate, right-click tigertech.xml
-and choose Validate, or run it through the built-in XSLT/XML tools.
+Goal: write the schemas so that tigertech.xml validates against tigertech.xsd
+in IntelliJ, and so that bad data (wrong SKU, negative price, unknown category)
+fails. Full instructions and the grading rubric are in the instruction sheet.

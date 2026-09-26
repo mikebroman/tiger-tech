@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TigerTech A2 - master schema. Ties the two vocabularies together.
+     Fill in the TODOs. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:cat="http://tigertech.example/categories"
+           xmlns:prod="http://tigertech.example/products">
+
+   <!-- TODO 1: import categories.xsd (categories namespace) and
+        products.xsd (products namespace). -->
+
+   <!-- TODO 2: declare the <store> element:
+          sequence of:
+            <header> - a sequence of <title> and <notice> (strings)
+            a reference to cat:categories
+            a reference to prod:catalog -->
+
+   <!-- GRADUATE ONLY (Part B): also add a key over cat:category/@catID and a
+        keyref over prod:product/@category, so an unknown category fails. -->
+
+</xs:schema>
