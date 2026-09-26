@@ -1,0 +1,7 @@
+(a) Two rules enforced by the XML Schemas that the Assignment 1 DTD could not enforce:
+   1. XML Schema can require prices to be non-negative decimals with no more than two decimal places and stock to be a non-negative integer.
+   2. It can require SKUs and category IDs to follow specific patterns. The Assignment 1 DTD treated those values as text or general IDs and could not enforce those rules.
+
+(b) An xs:list stores multiple whitespace-separated values in one attribute or element. Each value is checked against the list's item type. A single-value type represents only one value.
+
+(c) Venetian Blind design places reusable, named types at the global level while keeping element declarations localized to their containing types. This makes the XML easier to read, reuse, maintain, and extend.

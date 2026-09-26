@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TigerTech A2 - categories schema. The namespace setup is done for you.
-     Fill in the three TODOs. -->
+<!-- Mike Broman - 9-25-2026 -->
+
+<!-- TigerTech A2 - categories schema. -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:cat="http://tigertech.example/categories"
            targetNamespace="http://tigertech.example/categories"
            elementFormDefault="qualified">
 
-   <!-- TODO 1: define a simpleType catIDType - a string matching the pattern
-        CAT- followed by 2 to 5 uppercase letters (e.g. CAT-LAP). -->
+   <xs:simpleType name="nonEmptyStringType">
+      <xs:restriction base="xs:token">
+         <xs:minLength value="1"/>
+      </xs:restriction>
+   </xs:simpleType>
+
    <xs:simpleType name="catIDType">
       <xs:restriction base="xs:string">
          <xs:pattern value="CAT-[A-Z]{2,5}"/>
       </xs:restriction>
    </xs:simpleType>
 
-   <!-- TODO 2: declare the <categories> root element - a sequence of one or
-        more <category> elements. -->
-   <xs:element name="categories">
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element ref="cat:category" minOccurs="1" maxOccurs="unbounded"/>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
+   <xs:complexType name="categoryType">
+      <xs:sequence>
+         <xs:element name="name" type="cat:nonEmptyStringType"/>
+         <xs:element name="blurb" type="cat:nonEmptyStringType"/>
+      </xs:sequence>
+      <xs:attribute name="catID" type="cat:catIDType" use="required"/>
+   </xs:complexType>
 
-   <!-- TODO 3: declare the <category> element - a sequence of <name> and
-        <blurb> (both strings), plus a REQUIRED catID attribute of type catIDType. -->
-      <xs:element name="category">
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element name="name" type="xs:string"/>
-            <xs:element name="blurb" type="xs:string"/>
-         </xs:sequence>
-         <xs:attribute name="catID" type="cat:catIDType" use="required"/>
-      </xs:complexType>
-   </xs:element>
+   <xs:complexType name="categoriesType">
+      <xs:sequence>
+         <xs:element name="category" type="cat:categoryType"
+                     minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:element name="categories" type="cat:categoriesType"/>
 
 </xs:schema>

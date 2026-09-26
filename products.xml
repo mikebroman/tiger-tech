@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- TigerTech | XML Assignment 2 | provided data (adapted from Assignment 1) -->
 <prod:catalog xmlns:prod="http://tigertech.example/products">
-   <prod:product sku="TT-1001" category="CAT-LAP">
+   <prod:product sku="TT-1001" category="CAT-LAP" tags="portable premium">
       <prod:name>Aurora 14 Ultrabook</prod:name>
       <prod:price currency="USD">1299.00</prod:price>
       <prod:stock>14</prod:stock>
@@ -13,7 +13,7 @@
       <prod:stock>6</prod:stock>
       <prod:description><![CDATA[16" mini-LED creator laptop.]]></prod:description>
    </prod:product>
-   <prod:product sku="TT-2001" category="CAT-AUD">
+   <prod:product sku="TT-2001" category="CAT-AUD" tags="portable wireless">
       <prod:name>SoundWave Buds</prod:name>
       <prod:price currency="USD">149.00</prod:price>
       <prod:stock>40</prod:stock>
@@ -31,7 +31,7 @@
       <prod:stock>75</prod:stock>
       <prod:description><![CDATA[Aluminium stand, adjustable.]]></prod:description>
    </prod:product>
-   <prod:product sku="TT-3002" category="CAT-ACC">
+   <prod:product sku="TT-3002" category="CAT-ACC" tags="compact portable">
       <prod:name>HyperCharge 65W USB-C</prod:name>
       <prod:price currency="USD">39.00</prod:price>
       <prod:stock>120</prod:stock>
