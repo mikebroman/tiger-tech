@@ -8,11 +8,32 @@
 
    <!-- TODO 1: define a simpleType catIDType - a string matching the pattern
         CAT- followed by 2 to 5 uppercase letters (e.g. CAT-LAP). -->
+   <xs:simpleType name="catIDType">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="CAT-[A-Z]{2,5}"/>
+      </xs:restriction>
+   </xs:simpleType>
 
    <!-- TODO 2: declare the <categories> root element - a sequence of one or
         more <category> elements. -->
+   <xs:element name="categories">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="cat:category" minOccurs="1" maxOccurs="unbounded"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
 
    <!-- TODO 3: declare the <category> element - a sequence of <name> and
         <blurb> (both strings), plus a REQUIRED catID attribute of type catIDType. -->
+      <xs:element name="category">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="blurb" type="xs:string"/>
+         </xs:sequence>
+         <xs:attribute name="catID" type="cat:catIDType" use="required"/>
+      </xs:complexType>
+   </xs:element>
 
 </xs:schema>

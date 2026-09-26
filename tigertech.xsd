@@ -7,12 +7,32 @@
 
    <!-- TODO 1: import categories.xsd (categories namespace) and
         products.xsd (products namespace). -->
+   <xs:import namespace="http://tigertech.example/categories"
+              schemaLocation="categories.xsd"/>
+   <xs:import namespace="http://tigertech.example/products"
+              schemaLocation="products.xsd"/>
 
    <!-- TODO 2: declare the <store> element:
           sequence of:
             <header> - a sequence of <title> and <notice> (strings)
             a reference to cat:categories
             a reference to prod:catalog -->
+   <xs:element name="store">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="header">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="title" type="xs:string"/>
+                     <xs:element name="notice" type="xs:string"/>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element ref="cat:categories"/>
+            <xs:element ref="prod:catalog"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
 
    <!-- GRADUATE ONLY (Part B): also add a key over cat:category/@catID and a
         keyref over prod:product/@category, so an unknown category fails. -->
