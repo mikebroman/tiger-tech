@@ -1,23 +1,19 @@
-TigerTech - XML Assignment 1 - Starter Files
+TigerTech - XML Assignment 3 - Starter Files
 ============================================
 
-You are building the DATA LAYER for the TigerTech online store. Every
-later assignment (schema validation, XSLT reports, and the JSP web app)
-reuses these same files, so build them carefully.
+PROVIDED (do not change):
+  products.xml     the product catalog (from Assignments 1-2)
+  categories.xml   the categories (from Assignments 1-2)
+  orders.xml       NEW - customer orders; each <line> references a product by sku
 
-Files in this folder:
-  categories.xml   One category is filled in as a model. Add the rest.
-  products.xml     One product is filled in as a model. Add the rest.
-  tigertech.xml    A skeleton master document. YOU write the internal
-                   DTD and the entity references (see the TODO markers).
+YOU COMPLETE:
+  report.xsl       the stylesheet - follow the TODO markers
 
-Category reference (use these catID values in your products):
-  CAT-LAP  Laptops
-  CAT-AUD  Audio
-  CAT-ACC  Accessories
+Goal: transform orders.xml into an HTML order report. For each order line,
+look up the product name, price, and category from the other files, show line
+totals formatted as currency, and flag lines that exceed available stock.
 
-What to submit: the three completed files above (graduate students also
-submit tigertech.dtd and answers.txt - see the instruction sheet).
-
-Open the folder in IntelliJ IDEA. To validate, right-click tigertech.xml
-and choose Validate, or run it through the built-in XSLT/XML tools.
+Run it in IntelliJ (right-click report.xsl -> your XSLT run configuration with
+orders.xml as the input). Graduates add XSLT 2.0 features and need Saxon-HE -
+see the instruction sheet for setup. Full instructions and the rubric are in
+the instruction sheet.

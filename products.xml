@@ -1,87 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Mike Broman - 08-31-2026 -->
-<!-- TigerTech XML Assignment 1 - Products -->
+<!-- TigerTech | XML Assignment 2 | provided data (adapted from Assignment 1) -->
 <prod:catalog xmlns:prod="http://tigertech.example/products">
-   <prod:product prod:sku="TT-1001" prod:category="CAT-LAP" prod:condition="new">
-      <prod:name>Apple MacBook Pro 14</prod:name>
-      <prod:price currency="USD">1999.00</prod:price>
+   <prod:product sku="TT-1001" category="CAT-LAP">
+      <prod:name>Aurora 14 Ultrabook</prod:name>
+      <prod:price currency="USD">1299.00</prod:price>
       <prod:stock>14</prod:stock>
-      <prod:description><![CDATA[14" MacBook Pro with Apple silicon, 24 GB unified memory & a 1 TB SSD.]]></prod:description>
+      <prod:description><![CDATA[14" OLED, 32 GB RAM, 1 TB SSD.]]></prod:description>
    </prod:product>
-
-   <prod:product prod:sku="TT-1002" prod:category="CAT-LAP" prod:condition="refurbished">
-      <prod:name>Dell XPS 16</prod:name>
-      <prod:price currency="USD">1899.99</prod:price>
-      <prod:stock>8</prod:stock>
-      <prod:description><![CDATA[16.3" laptop with an Intel Core Ultra 7 processor, 32 GB RAM & 1 TB SSD.]]></prod:description>
+   <prod:product sku="TT-1002" category="CAT-LAP">
+      <prod:name>Aurora 16 Pro</prod:name>
+      <prod:price currency="USD">1899.00</prod:price>
+      <prod:stock>6</prod:stock>
+      <prod:description><![CDATA[16" mini-LED creator laptop.]]></prod:description>
    </prod:product>
-
-   <prod:product prod:sku="TT-2001" prod:category="CAT-AUD" prod:condition="new">
-      <prod:name>Logitech G PRO X 2 LIGHTSPEED Headset</prod:name>
-      <prod:price currency="USD">249.99</prod:price>
-      <prod:stock>31</prod:stock>
-      <prod:description><![CDATA[Wireless gaming headset with a detachable microphone.]]></prod:description>
+   <prod:product sku="TT-2001" category="CAT-AUD">
+      <prod:name>SoundWave Buds</prod:name>
+      <prod:price currency="USD">149.00</prod:price>
+      <prod:stock>40</prod:stock>
+      <prod:description><![CDATA[Wireless earbuds with ANC.]]></prod:description>
    </prod:product>
-
-   <prod:product prod:sku="TT-3001" prod:category="CAT-ACC" prod:condition="open-box">
-      <prod:name>ConnectPro USB-C Hub</prod:name>
-      <prod:price currency="USD">69.99</prod:price>
-      <prod:stock>24</prod:stock>
-      <prod:description><![CDATA[Seven-port USB-C hub with HDMI, Ethernet & SD card support.]]></prod:description>
-   </prod:product>
-
-   <prod:product prod:sku="TT-3002" prod:category="CAT-ACC" prod:condition="new">
-      <prod:name>Volt 100W Charger</prod:name>
-      <prod:price currency="USD">79.00</prod:price>
-      <prod:stock>39</prod:stock>
-      <prod:description><![CDATA[Three-port fast charger for laptops, tablets & phones.]]></prod:description>
-   </prod:product>
-
-   <prod:product prod:sku="TT-3003" prod:category="CAT-ACC" prod:condition="new">
-      <prod:name>Logitech MX Mechanical Mini</prod:name>
-      <prod:price currency="USD">149.99</prod:price>
-      <prod:stock>18</prod:stock>
-      <prod:description><![CDATA[Compact wireless mechanical keyboard with quiet tactile switches & multi-device pairing.]]></prod:description>
-   </prod:product>
-
-   <prod:product prod:sku="TT-3004" prod:category="CAT-ACC" prod:condition="refurbished">
-      <prod:name>Logitech MX Master 3S</prod:name>
-      <prod:price currency="USD">99.99</prod:price>
+   <prod:product sku="TT-2002" category="CAT-AUD">
+      <prod:name>SoundWave Over-Ear</prod:name>
+      <prod:price currency="USD">249.00</prod:price>
       <prod:stock>12</prod:stock>
-      <prod:description><![CDATA[Ergonomic wireless mouse with quiet clicks, an 8K DPI sensor & precision scrolling.]]></prod:description>
+      <prod:description><![CDATA[Over-ear headphones, 40-hour battery.]]></prod:description>
    </prod:product>
-
-   <prod:product prod:sku="TT-4001" prod:category="CAT-GAM" prod:condition="open-box">
-      <prod:name>Logitech G X56 H.O.T.A.S.</prod:name>
-      <prod:price currency="USD">249.99</prod:price>
-      <prod:stock>9</prod:stock>
-      <prod:description><![CDATA[RGB throttle-and-stick system with adjustable resistance & controls for modern flight simulators.]]></prod:description>
+   <prod:product sku="TT-3001" category="CAT-ACC">
+      <prod:name>GripStand Laptop Stand</prod:name>
+      <prod:price currency="USD">59.00</prod:price>
+      <prod:stock>75</prod:stock>
+      <prod:description><![CDATA[Aluminium stand, adjustable.]]></prod:description>
    </prod:product>
-
-   <prod:product prod:sku="TT-4002" prod:category="CAT-GAM" prod:condition="refurbished">
-      <prod:name>Logitech G Flight Yoke System</prod:name>
-      <prod:price currency="USD">169.99</prod:price>
-      <prod:stock>11</prod:stock>
-      <prod:description><![CDATA[Stainless-steel yoke with a three-lever throttle quadrant & programmable controls.]]></prod:description>
+   <prod:product sku="TT-3002" category="CAT-ACC">
+      <prod:name>HyperCharge 65W USB-C</prod:name>
+      <prod:price currency="USD">39.00</prod:price>
+      <prod:stock>120</prod:stock>
+      <prod:description><![CDATA[Compact GaN charger.]]></prod:description>
    </prod:product>
-
-   <prod:product prod:sku="TT-6001" prod:category="CAT-COM" prod:condition="new">
-      <prod:name>Samsung 990 PRO 2 TB SSD</prod:name>
-      <prod:price currency="USD">179.99</prod:price>
-      <prod:stock>22</prod:stock>
-      <prod:description><![CDATA[2 TB NVMe solid-state drive for desktop PCs & compatible laptops.]]></prod:description>
-   </prod:product>
-
-   <prod:product prod:sku="TT-7001" prod:category="CAT-MOB" prod:condition="new">
-      <prod:name>Apple iPad Pro 11-inch</prod:name>
-      <prod:price currency="USD">999.00</prod:price>
-      <prod:stock>15</prod:stock>
-      <prod:description><![CDATA[11" Wi-Fi tablet with 256 GB of storage & an Ultra Retina XDR display.]]></prod:description>
-   </prod:product>
-
-   <prod:bundles>
-      <prod:bundle prod:bundleID="BDL-001" prod:products="TT-1001 TT-3003 TT-3004"/>
-      <prod:bundle prod:bundleID="BDL-002" prod:products="TT-2001 TT-4001 TT-4002"/>
-      <prod:bundle prod:bundleID="BDL-003" prod:products="TT-1002 TT-3001 TT-6001"/>
-   </prod:bundles>
 </prod:catalog>

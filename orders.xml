@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TigerTech | XML Assignment 3 | provided data. Each <line> references a
+     product in products.xml by its sku. -->
+<orders>
+   <order orderID="ORD-1001" date="2026-06-14" customer="Jordan Lee">
+      <line sku="TT-1001" qty="1"/>
+      <line sku="TT-3002" qty="2"/>
+   </order>
+   <order orderID="ORD-1002" date="2026-06-15" customer="Priya Patel">
+      <line sku="TT-2001" qty="3"/>
+      <line sku="TT-3001" qty="1"/>
+   </order>
+   <order orderID="ORD-1003" date="2026-06-16" customer="Sam Rivera">
+      <line sku="TT-1002" qty="1"/>
+      <line sku="TT-2002" qty="15"/>
+      <line sku="TT-3002" qty="4"/>
+   </order>
+</orders>
