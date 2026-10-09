@@ -1,0 +1,280 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>TigerTech - Order Report</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+          * { box-sizing: border-box; }
+          body { margin: 0; background: #f3f5f7; color: #202b36;
+                 font-family: Arial, Helvetica, sans-serif; line-height: 1.5; }
+          main { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+          h1 { margin: 0; color: #173b57; }
+          h2 { margin: 30px 0 12px; color: #173b57; }
+          h3 { margin: 0 0 8px; }
+          .generated, .note { color: #52606d; }
+          .table-wrap { overflow-x: auto; }
+          table { width: 100%; border-collapse: collapse; background: white; }
+          caption { text-align: left; padding: 0 0 8px; font-weight: bold; }
+          th, td { padding: 12px; border-bottom: 1px solid #dce2e7;
+                   text-align: left; vertical-align: top; }
+          thead th { background: #173b57; color: white; }
+          .number { text-align: right; white-space: nowrap;
+                    font-variant-numeric: tabular-nums; }
+          tfoot th, tfoot td { background: #edf2f6; font-weight: bold; }
+          .order-card { margin: 16px 0; padding: 20px; background: white;
+                        border: 1px solid #dce2e7; border-radius: 8px; }
+          .order-meta { margin: 0 0 16px; }
+          .stock-warning { color: #8a250a; font-weight: bold; }
+          .over-stock { background: #fff6ed; }
+          .sku { display: block; color: #52606d; font-size: 0.85em; }
+          a { color: #145781; }
+          @media (max-width: 600px) {
+            main { padding: 20px 12px; }
+            .order-card { padding: 12px; }
+            th, td { padding: 10px; }
+          }
+          @media print {
+            body { background: white; }
+            main { max-width: none; padding: 0; }
+            .order-card { break-inside: avoid; }
+          }
+        </style>
+   </head>
+   <body>
+      <main>
+         <h1>TigerTech Order Report</h1>
+         <p class="generated">Generated on <time datetime="2026-10-08">October 8, 2026</time></p>
+         <section aria-labelledby="summary-heading">
+            <h2 id="summary-heading">Order summary</h2>
+            <div class="table-wrap">
+               <table id="order-summary">
+                  <caption>Orders, oldest first</caption>
+                  <thead>
+                     <tr>
+                        <th scope="col">Order</th>
+                        <th scope="col">Customer</th>
+                        <th scope="col">Date</th>
+                        <th scope="col" class="number">Items</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td><a href="#ORD-1001">ORD-1001</a></td>
+                        <td>Jordan Lee</td>
+                        <td><time datetime="2026-06-14">June 14, 2026</time></td>
+                        <td class="number">3</td>
+                     </tr>
+                     <tr>
+                        <td><a href="#ORD-1002">ORD-1002</a></td>
+                        <td>Priya Patel</td>
+                        <td><time datetime="2026-06-15">June 15, 2026</time></td>
+                        <td class="number">4</td>
+                     </tr>
+                     <tr>
+                        <td><a href="#ORD-1003">ORD-1003</a></td>
+                        <td>Sam Rivera</td>
+                        <td><time datetime="2026-06-16">June 16, 2026</time></td>
+                        <td class="number">20</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </section>
+         <section aria-labelledby="details-heading">
+            <h2 id="details-heading">Order details</h2>
+            <article class="order-card" id="ORD-1001" aria-labelledby="heading-ORD-1001">
+               <h3 id="heading-ORD-1001">ORD-1001</h3>
+               <p class="order-meta"><strong>Customer: </strong>Jordan Lee<br><strong>Date: </strong><time datetime="2026-06-14">June 14, 2026</time></p>
+               <div class="table-wrap">
+                  <table class="order-lines">
+                     <caption>Line items for ORD-1001</caption>
+                     <thead>
+                        <tr>
+                           <th scope="col">Product</th>
+                           <th scope="col">Category</th>
+                           <th scope="col" class="number">Unit price</th>
+                           <th scope="col" class="number">Quantity</th>
+                           <th scope="col" class="number">Line total</th>
+                           <th scope="col">Stock check</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <th scope="row">Aurora 14 Ultrabook<span class="sku">TT-1001</span></th>
+                           <td>Laptops</td>
+                           <td class="number">$1,299.00</td>
+                           <td class="number">1</td>
+                           <td class="number">$1,299.00</td>
+                           <td>In stock</td>
+                        </tr>
+                        <tr>
+                           <th scope="row">HyperCharge 65W USB-C<span class="sku">TT-3002</span></th>
+                           <td>Accessories</td>
+                           <td class="number">$39.00</td>
+                           <td class="number">2</td>
+                           <td class="number">$78.00</td>
+                           <td>In stock</td>
+                        </tr>
+                     </tbody>
+                     <tfoot>
+                        <tr>
+                           <th scope="row" colspan="3">Total items</th>
+                           <td class="number">3</td>
+                           <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                           <th scope="row" colspan="4">Order total</th>
+                           <td class="number">$1,377.00</td>
+                           <td></td>
+                        </tr>
+                     </tfoot>
+                  </table>
+               </div>
+            </article>
+            <article class="order-card" id="ORD-1002" aria-labelledby="heading-ORD-1002">
+               <h3 id="heading-ORD-1002">ORD-1002</h3>
+               <p class="order-meta"><strong>Customer: </strong>Priya Patel<br><strong>Date: </strong><time datetime="2026-06-15">June 15, 2026</time></p>
+               <div class="table-wrap">
+                  <table class="order-lines">
+                     <caption>Line items for ORD-1002</caption>
+                     <thead>
+                        <tr>
+                           <th scope="col">Product</th>
+                           <th scope="col">Category</th>
+                           <th scope="col" class="number">Unit price</th>
+                           <th scope="col" class="number">Quantity</th>
+                           <th scope="col" class="number">Line total</th>
+                           <th scope="col">Stock check</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <th scope="row">SoundWave Buds<span class="sku">TT-2001</span></th>
+                           <td>Audio</td>
+                           <td class="number">$149.00</td>
+                           <td class="number">3</td>
+                           <td class="number">$447.00</td>
+                           <td>In stock</td>
+                        </tr>
+                        <tr>
+                           <th scope="row">GripStand Laptop Stand<span class="sku">TT-3001</span></th>
+                           <td>Accessories</td>
+                           <td class="number">$59.00</td>
+                           <td class="number">1</td>
+                           <td class="number">$59.00</td>
+                           <td>In stock</td>
+                        </tr>
+                     </tbody>
+                     <tfoot>
+                        <tr>
+                           <th scope="row" colspan="3">Total items</th>
+                           <td class="number">4</td>
+                           <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                           <th scope="row" colspan="4">Order total</th>
+                           <td class="number">$506.00</td>
+                           <td></td>
+                        </tr>
+                     </tfoot>
+                  </table>
+               </div>
+            </article>
+            <article class="order-card" id="ORD-1003" aria-labelledby="heading-ORD-1003">
+               <h3 id="heading-ORD-1003">ORD-1003</h3>
+               <p class="order-meta"><strong>Customer: </strong>Sam Rivera<br><strong>Date: </strong><time datetime="2026-06-16">June 16, 2026</time></p>
+               <div class="table-wrap">
+                  <table class="order-lines">
+                     <caption>Line items for ORD-1003</caption>
+                     <thead>
+                        <tr>
+                           <th scope="col">Product</th>
+                           <th scope="col">Category</th>
+                           <th scope="col" class="number">Unit price</th>
+                           <th scope="col" class="number">Quantity</th>
+                           <th scope="col" class="number">Line total</th>
+                           <th scope="col">Stock check</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <th scope="row">Aurora 16 Pro<span class="sku">TT-1002</span></th>
+                           <td>Laptops</td>
+                           <td class="number">$1,899.00</td>
+                           <td class="number">1</td>
+                           <td class="number">$1,899.00</td>
+                           <td>In stock</td>
+                        </tr>
+                        <tr class="over-stock">
+                           <th scope="row">SoundWave Over-Ear<span class="sku">TT-2002</span></th>
+                           <td>Audio</td>
+                           <td class="number">$249.00</td>
+                           <td class="number">15</td>
+                           <td class="number">$3,735.00</td>
+                           <td><span class="stock-warning">Only 12 in stock</span></td>
+                        </tr>
+                        <tr>
+                           <th scope="row">HyperCharge 65W USB-C<span class="sku">TT-3002</span></th>
+                           <td>Accessories</td>
+                           <td class="number">$39.00</td>
+                           <td class="number">4</td>
+                           <td class="number">$156.00</td>
+                           <td>In stock</td>
+                        </tr>
+                     </tbody>
+                     <tfoot>
+                        <tr>
+                           <th scope="row" colspan="3">Total items</th>
+                           <td class="number">20</td>
+                           <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                           <th scope="row" colspan="4">Order total</th>
+                           <td class="number">$5,790.00</td>
+                           <td></td>
+                        </tr>
+                     </tfoot>
+                  </table>
+               </div>
+            </article>
+         </section>
+         <section aria-labelledby="revenue-heading">
+            <h2 id="revenue-heading">Revenue by category</h2>
+            <p class="note">Based on all ordered quantities, including lines flagged for insufficient stock.</p>
+            <div class="table-wrap">
+               <table id="category-revenue">
+                  <caption>Total order value by product category</caption>
+                  <thead>
+                     <tr>
+                        <th scope="col">Category</th>
+                        <th scope="col" class="number">Revenue</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th scope="row">Accessories</th>
+                        <td class="number">$293.00</td>
+                     </tr>
+                     <tr>
+                        <th scope="row">Audio</th>
+                        <td class="number">$4,182.00</td>
+                     </tr>
+                     <tr>
+                        <th scope="row">Laptops</th>
+                        <td class="number">$3,198.00</td>
+                     </tr>
+                  </tbody>
+                  <tfoot>
+                     <tr>
+                        <th scope="row">Total revenue</th>
+                        <td class="number">$7,673.00</td>
+                     </tr>
+                  </tfoot>
+               </table>
+            </div>
+         </section>
+      </main>
+   </body>
+</html>
