@@ -1,51 +1,7 @@
-Mike Broman
-October 8, 2026
-TigerTech - XML Assignment 3 - Part B
+Mike Broman - 10/10/2026
 
-(a) What does an xsl:function let you do that a named template does not?
+(a) It defines a function that can be called in an expression, such as select="tt:willISurviveGradSchool($effort + $luck)". A named template is called with xsl:call-template instead, so I cannot call it directly inside an XPath expression.
 
-An xsl:function defines a function that can be called directly in an XPath
-expression, such as select="tt:money($price * $quantity)". It accepts parameters
-and returns a value or sequence; its parameter and return types can also be
-declared. A named template is invoked with the xsl:call-template instruction,
-not as a function inside an XPath expression. Named templates can also produce
-values, but a stylesheet function is convenient when an expression needs a
-reusable calculation or formatted value. This report uses tt:money for every
-monetary value so that currency formatting is defined in one place.
+(b) XSLT 2.0 lets me use for ... return to build a sequence of price times quantity values, then add them with sum(). In XSLT 1.0, sum() takes a node-set rather than a sequence of calculated numbers. I would need extra steps, such as a recursive template that passes a running total.
 
-(b) Why is the money total easy in XSLT 2.0 but awkward in XSLT 1.0?
-
-XPath 2.0 can construct a sequence of computed atomic values. For each order,
-this report uses a for expression to look up each line's decimal price,
-multiply it by the decimal quantity, and return the result. The sum function
-then adds those results:
-
-  sum(for $l in line return
-    xs:decimal($products/prod:catalog/prod:product[@sku = $l/@sku]/prod:price)
-    * xs:decimal($l/@qty))
-
-XPath 1.0's sum function accepts a node-set. It can sum existing quantity
-attributes, but it cannot accept a sequence of price-times-quantity results
-constructed with a for expression. A portable XSLT 1.0 solution normally uses
-a recursive named template with a running total. Another approach constructs
-temporary total nodes and uses a processor-specific node-set extension to
-sum them. XSLT 2.0 expresses the calculation directly and supports xs:decimal
-arithmetic, which avoids binary floating-point rounding in these money sums.
-
-(c) What does xsl:for-each-group give you over grouping by hand?
-
-xsl:for-each-group partitions the selected lines according to a grouping key
-and processes each group once. current-group() supplies all lines in that
-group, and current-grouping-key() supplies its category ID. The report groups
-all order lines by the category ID of their referenced product, looks up the
-category name, and sums the line values within each group. Different SKUs in
-the same category therefore contribute to a single category total, including
-lines from different orders.
-
-In XSLT 1.0, grouping usually requires a technique such as Muenchian grouping:
-declare a key, identify one representative node per group, and retrieve its
-members separately. Native grouping makes that bookkeeping unnecessary and
-makes the grouping rule and group calculation easier to read and maintain.
-
-Reference: W3C, XSL Transformations (XSLT) Version 2.0,
-https://www.w3.org/TR/xslt20/ (stylesheet functions and grouping).
+(c) xsl:for-each-group groups items that share a value. For this report, I group order lines by the product's category, then use current-group() to calculate that category's revenue. In 1.0, I would need to identify each distinct category and find its matching lines myself, often using keys.

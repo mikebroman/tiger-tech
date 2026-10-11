@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Mike Broman | October 8, 2026 | TigerTech XML Assignment 3, Parts A and B -->
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mike Broman | October 11, 2026 | TigerTech XML Assignment 3 -->
 <xsl:stylesheet version="2.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -8,15 +8,12 @@
     xmlns:tt="http://tigertech.example/functions"
     exclude-result-prefixes="xs prod cat tt">
 
-  <xsl:output method="html" encoding="UTF-8" indent="yes"
-      doctype-system="about:legacy-compat"/>
-  <xsl:strip-space elements="*"/>
+  <xsl:output method="html" encoding="UTF-8" indent="yes" doctype-system="about:legacy-compat"/>
 
-  <!-- Relative document URIs resolve beside this stylesheet. -->
+  <!-- the two files used for product and category lookups -->
   <xsl:variable name="products" select="document('products.xml')"/>
   <xsl:variable name="categories" select="document('categories.xml')"/>
 
-  <!-- A typed function can be called directly from XPath expressions. -->
   <xsl:function name="tt:money" as="xs:string">
     <xsl:param name="amount" as="xs:decimal"/>
     <xsl:sequence select="format-number($amount, '$#,##0.00')"/>
@@ -26,220 +23,219 @@
     <html lang="en">
       <head>
         <title>TigerTech - Order Report</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <style>
-          * { box-sizing: border-box; }
-          body { margin: 0; background: #f3f5f7; color: #202b36;
-                 font-family: Arial, Helvetica, sans-serif; line-height: 1.5; }
-          main { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
-          h1 { margin: 0; color: #173b57; }
-          h2 { margin: 30px 0 12px; color: #173b57; }
-          h3 { margin: 0 0 8px; }
-          .generated, .note { color: #52606d; }
-          .table-wrap { overflow-x: auto; }
-          table { width: 100%; border-collapse: collapse; background: white; }
-          caption { text-align: left; padding: 0 0 8px; font-weight: bold; }
-          th, td { padding: 12px; border-bottom: 1px solid #dce2e7;
-                   text-align: left; vertical-align: top; }
-          thead th { background: #173b57; color: white; }
-          .number { text-align: right; white-space: nowrap;
-                    font-variant-numeric: tabular-nums; }
-          tfoot th, tfoot td { background: #edf2f6; font-weight: bold; }
-          .order-card { margin: 16px 0; padding: 20px; background: white;
-                        border: 1px solid #dce2e7; border-radius: 8px; }
-          .order-meta { margin: 0 0 16px; }
-          .stock-warning { color: #8a250a; font-weight: bold; }
-          .over-stock { background: #fff6ed; }
-          .sku { display: block; color: #52606d; font-size: 0.85em; }
-          a { color: #145781; }
-          @media (max-width: 600px) {
-            main { padding: 20px 12px; }
-            .order-card { padding: 12px; }
-            th, td { padding: 10px; }
+          body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 24px auto;
+            padding: 0 20px;
+            line-height: 1.5;
+            background: #f6f6f4;
+            color: #0b2341;
           }
-          @media print {
-            body { background: white; }
-            main { max-width: none; padding: 0; }
-            .order-card { break-inside: avoid; }
+
+          header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: #0b2341;
+            color: white;
+            border-bottom: 5px solid #e86100;
+          }
+
+          header img {
+            width: 68px;
+            height: 68px;
+            flex-shrink: 0;
+          }
+
+          h1 {
+            margin: 0;
+            font-size: 28px;
+          }
+
+          .generated {
+            margin: 6px 0 0;
+            font-size: 14px;
+          }
+
+          h2 {
+            margin: 28px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e86100;
+          }
+
+          h3 {
+            margin: 0 0 8px;
+          }
+
+          .order {
+            background: white;
+            padding: 16px;
+            margin-bottom: 20px;
+            border-left: 3px solid #e86100;
+            overflow-x: auto;
+          }
+
+          .order p {
+            margin: 0 0 12px;
+          }
+
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-bottom: 20px;
+          }
+
+          th,
+          td {
+            border: 1px solid #d5dbe1;
+            padding: 9px 12px;
+            text-align: left;
+          }
+
+          thead th {
+            background: #0b2341;
+            color: white;
+          }
+
+          tbody tr:nth-child(even) {
+            background: #f6f7f9;
+          }
+
+          tfoot {
+            background: #eef1f4;
+            font-weight: bold;
+          }
+
+          .order table {
+            margin-bottom: 0;
+          }
+
+          .warning {
+            color: #8b2d0b;
+            background: #fff2e6;
+            font-weight: bold;
+            padding: 2px 4px;
           }
         </style>
       </head>
       <body>
-        <main>
-          <h1>TigerTech Order Report</h1>
-          <p class="generated">
-            <xsl:text>Generated on </xsl:text>
-            <time datetime="{format-date(current-date(), '[Y0001]-[M01]-[D01]')}">
-              <xsl:value-of select="format-date(current-date(), '[MNn] [D], [Y]', 'en', (), ())"/>
-            </time>
-          </p>
+        <header>
+          <img src="https://cdn.auburn.edu/assets/icons/brand_elements/au_logo/au_logo_orange_circle_whiteoutline.svg"
+              alt="Auburn University logo" width="68" height="68"/>
+          <div>
+            <h1>TigerTech Order Report</h1>
+            <p class="generated">Generated on <xsl:value-of select="format-date(current-date(), '[MNn] [D], [Y]')"/></p>
+          </div>
+        </header>
 
-          <section aria-labelledby="summary-heading">
-            <h2 id="summary-heading">Order summary</h2>
-            <div class="table-wrap">
-              <table id="order-summary">
-                <caption>Orders, oldest first</caption>
-                <thead>
-                  <tr>
-                    <th scope="col">Order</th>
-                    <th scope="col">Customer</th>
-                    <th scope="col">Date</th>
-                    <th scope="col" class="number">Items</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <xsl:apply-templates select="order" mode="summary">
-                    <xsl:sort select="@date" data-type="text" order="ascending"/>
-                  </xsl:apply-templates>
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section aria-labelledby="details-heading">
-            <h2 id="details-heading">Order details</h2>
-            <xsl:apply-templates select="order">
-              <xsl:sort select="@date" data-type="text" order="ascending"/>
+        <h2>Order summary</h2>
+        <table>
+          <thead>
+            <tr><th>Order</th><th>Customer</th><th>Date</th><th>Items</th></tr>
+          </thead>
+          <tbody>
+            <xsl:apply-templates select="order" mode="summary">
+              <xsl:sort select="@date"/>
             </xsl:apply-templates>
-          </section>
+          </tbody>
+        </table>
 
-          <section aria-labelledby="revenue-heading">
-            <h2 id="revenue-heading">Revenue by category</h2>
-            <p class="note">Based on all ordered quantities, including lines flagged for insufficient stock.</p>
-            <div class="table-wrap">
-              <table id="category-revenue">
-                <caption>Total order value by product category</caption>
-                <thead>
-                  <tr>
-                    <th scope="col">Category</th>
-                    <th scope="col" class="number">Revenue</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Bind the line's SKU before changing context to the catalog. -->
-                  <xsl:for-each-group select="order/line"
-                      group-by="for $sku in @sku return $products/prod:catalog/prod:product[@sku = $sku]/@category">
-                    <xsl:sort select="$categories/cat:categories/cat:category[@catID = current-grouping-key()]/cat:name"/>
-                    <xsl:variable name="revenue" as="xs:decimal"
-                        select="sum(for $l in current-group() return
-                          xs:decimal($products/prod:catalog/prod:product[@sku = $l/@sku]/prod:price)
-                          * xs:decimal($l/@qty))"/>
-                    <tr>
-                      <th scope="row">
-                        <xsl:value-of select="$categories/cat:categories/cat:category[@catID = current-grouping-key()]/cat:name"/>
-                      </th>
-                      <td class="number"><xsl:value-of select="tt:money($revenue)"/></td>
-                    </tr>
-                  </xsl:for-each-group>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th scope="row">Total revenue</th>
-                    <td class="number">
-                      <xsl:value-of select="tt:money(sum(for $l in order/line return
-                        xs:decimal($products/prod:catalog/prod:product[@sku = $l/@sku]/prod:price)
-                        * xs:decimal($l/@qty)))"/>
-                    </td>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-          </section>
-        </main>
+        <h2>Order details</h2>
+        <xsl:apply-templates select="order">
+          <xsl:sort select="@date"/>
+        </xsl:apply-templates>
+
+        <h2>Revenue by category</h2>
+        <table>
+          <thead>
+            <tr><th>Category</th><th>Revenue</th></tr>
+          </thead>
+          <tbody>
+            <!-- Save the line's SKU so the product lookup uses the right value. -->
+            <xsl:for-each-group select="order/line"
+                group-by="for $sku in @sku return $products/prod:catalog/prod:product[@sku = $sku]/@category">
+              <xsl:sort select="current-grouping-key()"/>
+              <xsl:variable name="category" select="current-grouping-key()"/>
+              <xsl:variable name="revenue" select="sum(for $l in current-group() return
+                xs:decimal($products/prod:catalog/prod:product[@sku = $l/@sku]/prod:price)
+                * xs:decimal($l/@qty))"/>
+              <tr>
+                <td><xsl:value-of select="$categories/cat:categories/cat:category[@catID = $category]/cat:name"/></td>
+                <td><xsl:value-of select="tt:money($revenue)"/></td>
+              </tr>
+            </xsl:for-each-group>
+          </tbody>
+        </table>
       </body>
     </html>
   </xsl:template>
 
-  <!-- First pass: one summary row per order. -->
+  <!-- SUMMARY VIEW -->
   <xsl:template match="order" mode="summary">
     <tr>
-      <td><a href="#{@orderID}"><xsl:value-of select="@orderID"/></a></td>
+      <td><xsl:value-of select="@orderID"/></td>
       <td><xsl:value-of select="@customer"/></td>
-      <td>
-        <time datetime="{@date}">
-          <xsl:value-of select="format-date(xs:date(@date), '[MNn] [D], [Y]', 'en', (), ())"/>
-        </time>
-      </td>
-      <td class="number"><xsl:value-of select="sum(line/@qty)"/></td>
+      <td><xsl:value-of select="format-date(xs:date(@date), '[MNn] [D], [Y]')"/></td>
+      <td><xsl:value-of select="sum(line/@qty)"/></td>
     </tr>
   </xsl:template>
 
-  <!-- Second pass: one detailed card per order in the default mode. -->
+  <!-- DETAILED VIEW -->
   <xsl:template match="order">
-    <xsl:variable name="order-total" as="xs:decimal"
-        select="sum(for $l in line return
-          xs:decimal($products/prod:catalog/prod:product[@sku = $l/@sku]/prod:price)
-          * xs:decimal($l/@qty))"/>
-    <article class="order-card" id="{@orderID}" aria-labelledby="heading-{@orderID}">
-      <h3 id="heading-{@orderID}"><xsl:value-of select="@orderID"/></h3>
-      <p class="order-meta">
-        <strong>Customer: </strong><xsl:value-of select="@customer"/>
-        <br/>
-        <strong>Date: </strong>
-        <time datetime="{@date}">
-          <xsl:value-of select="format-date(xs:date(@date), '[MNn] [D], [Y]', 'en', (), ())"/>
-        </time>
+    <xsl:variable name="order-total" select="sum(for $l in line return
+      xs:decimal($products/prod:catalog/prod:product[@sku = $l/@sku]/prod:price)
+      * xs:decimal($l/@qty))"/>
+
+    <div class="order">
+      <h3><xsl:value-of select="@orderID"/></h3>
+      <p>
+        Customer: <xsl:value-of select="@customer"/><br/>
+        Date: <xsl:value-of select="format-date(xs:date(@date), '[MNn] [D], [Y]')"/>
       </p>
-      <div class="table-wrap">
-        <table class="order-lines">
-          <caption>Line items for <xsl:value-of select="@orderID"/></caption>
-          <thead>
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th><th>Category</th><th>Unit price</th>
+            <th>Quantity</th><th>Line total</th><th>Stock check</th>
+          </tr>
+        </thead>
+        <tbody>
+          <xsl:for-each select="line">
+            <xsl:variable name="p"
+                select="$products/prod:catalog/prod:product[@sku = current()/@sku]"/>
+            <xsl:variable name="price" select="xs:decimal($p/prod:price)"/>
+            <xsl:variable name="quantity" select="xs:decimal(@qty)"/>
             <tr>
-              <th scope="col">Product</th>
-              <th scope="col">Category</th>
-              <th scope="col" class="number">Unit price</th>
-              <th scope="col" class="number">Quantity</th>
-              <th scope="col" class="number">Line total</th>
-              <th scope="col">Stock check</th>
-            </tr>
-          </thead>
-          <tbody>
-            <xsl:for-each select="line">
-              <xsl:variable name="p"
-                  select="$products/prod:catalog/prod:product[@sku = current()/@sku]"/>
-              <xsl:variable name="price" as="xs:decimal" select="xs:decimal($p/prod:price)"/>
-              <xsl:variable name="quantity" as="xs:decimal" select="xs:decimal(@qty)"/>
-              <tr>
-                <xsl:if test="$quantity &gt; xs:decimal($p/prod:stock)">
-                  <xsl:attribute name="class">over-stock</xsl:attribute>
+              <td><xsl:value-of select="$p/prod:name"/></td>
+              <td><xsl:value-of select="$categories/cat:categories/cat:category[@catID = $p/@category]/cat:name"/></td>
+              <td><xsl:value-of select="tt:money($price)"/></td>
+              <td><xsl:value-of select="@qty"/></td>
+              <td><xsl:value-of select="tt:money($price * $quantity)"/></td>
+              <td>
+                <xsl:if test="$quantity &gt; $p/prod:stock">
+                  <span class="warning">Only <xsl:value-of select="$p/prod:stock"/> in stock</span>
                 </xsl:if>
-                <th scope="row">
-                  <xsl:value-of select="$p/prod:name"/>
-                  <span class="sku"><xsl:value-of select="@sku"/></span>
-                </th>
-                <td>
-                  <xsl:value-of select="$categories/cat:categories/cat:category[@catID = $p/@category]/cat:name"/>
-                </td>
-                <td class="number"><xsl:value-of select="tt:money($price)"/></td>
-                <td class="number"><xsl:value-of select="@qty"/></td>
-                <td class="number"><xsl:value-of select="tt:money($price * $quantity)"/></td>
-                <td>
-                  <xsl:if test="$quantity &gt; xs:decimal($p/prod:stock)">
-                    <span class="stock-warning">
-                      <xsl:text>Only </xsl:text>
-                      <xsl:value-of select="$p/prod:stock"/>
-                      <xsl:text> in stock</xsl:text>
-                    </span>
-                  </xsl:if>
-                  <xsl:if test="$quantity &lt;= xs:decimal($p/prod:stock)">In stock</xsl:if>
-                </td>
-              </tr>
-            </xsl:for-each>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th scope="row" colspan="3">Total items</th>
-              <td class="number"><xsl:value-of select="sum(line/@qty)"/></td>
-              <td colspan="2"></td>
+              </td>
             </tr>
-            <tr>
-              <th scope="row" colspan="4">Order total</th>
-              <td class="number"><xsl:value-of select="tt:money($order-total)"/></td>
-              <td></td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    </article>
+          </xsl:for-each>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="3">Total items</th>
+            <td><xsl:value-of select="sum(line/@qty)"/></td>
+            <td colspan="2"></td>
+          </tr>
+          <tr>
+            <th colspan="4">Order total</th>
+            <td><xsl:value-of select="tt:money($order-total)"/></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   </xsl:template>
 </xsl:stylesheet>
