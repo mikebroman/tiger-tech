@@ -1,0 +1,10 @@
+When you send a request for a Web page to a remote computer, the remote computer is called a Web server.#true
+In the client/server model, presentation logic governs how data are manipulated.#false
+In the client/server model, business logic governs how data are manipulated.#true
+Business logic controls how the data returned from the database is manipulated before it is displayed on the client machine.#true
+Each scripting language requires its own interpreter.#true
+Client-side scripts are executed on the Web server.#false
+A function can be called only once during the running of a script.#false
+A function can not return a value.#false
+When you create a separate file for your JavaScript program, you name it with a .js file extension.#true
+The JSP code is executed on the client browser.#false
