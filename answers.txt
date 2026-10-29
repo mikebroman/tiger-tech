@@ -1,5 +1,0 @@
-a. Because XML does not allow a parameter entity to be used inside a declaration in the internal DTD.
-
-b. IDREF stores one reference to a single ID. IDREFS stores a whitespace separated list of references to one-to-many existing IDs.
-
-c. DTDs are not namespace-aware. They treat prefixed names such as "prod:product" as literal names, so the prefixes and xmlns attributes must be declared exactly as they appear in the XML.
